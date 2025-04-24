@@ -1,4 +1,4 @@
-import { Schema,model } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const settingSchema = new Schema(
   {
@@ -12,22 +12,9 @@ const settingSchema = new Schema(
       enum: ["light", "dark"],
       default: "light",
     },
-    language: {
-      type: String,
-      default: "en",
-    },
-    notificationsEnabled: {
-      type: Boolean,
-      default: true,
-    },
-    reminderTime: {
-      type: String,
-      default: "08:00",
-    },
   },
   { timestamps: true }
 );
-
 
 const Setting = model("Setting", settingSchema);
 
