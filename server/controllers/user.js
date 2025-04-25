@@ -34,7 +34,7 @@ const postSignup = async (req, res) => {
     });
 
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+      expiresIn: 60 * 60 * 24
     });
 
     return res.status(201).json({
@@ -85,7 +85,7 @@ const postLogin = async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+      expiresIn:  60 * 60 * 24
     });
 
     return res.status(200).json({

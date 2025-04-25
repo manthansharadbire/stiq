@@ -3,29 +3,17 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
-
 import authenticate from './middlewares/authenticate.js';
-
 import { postSignup, postLogin } from "./controllers/user.js";
-
-import {
-  postHabit,
-  getHabits,
-  updateHabit,
-  deleteHabit,
-} from "./controllers/habit.js";
-
-import {
-  getProgressSummary,
-  logHabitProgress,
-} from "./controllers/progress.js";
+import {postHabit,getHabits,updateHabit,deleteHabit,} from "./controllers/habit.js";
+import {getProgressSummary,logHabitProgress,} from "./controllers/progress.js";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 const connectDB = async () => {
-  const conn = await mongoose.connect(process.env.MONGO_URI);
+const conn = await mongoose.connect(process.env.MONGO_URI);
 
   if (conn) {
     console.log("MongoDB connected Successfully!");
@@ -39,9 +27,9 @@ app.get("/health", (req, res) => {
 });
 
 //login
-app.post("/login",authenticate, postLogin);
+app.post("/login", postLogin);
 //signup
-app.post("/signup",authenticate, postSignup);
+app.post("/signup",postSignup);
 
 //to create a new habit
 app.post("/habit",authenticate, postHabit);
