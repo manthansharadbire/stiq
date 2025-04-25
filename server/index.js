@@ -3,23 +3,27 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
+
+import authenticate from './middlewares/authenticate.js';
+
 import { postSignup, postLogin } from "./controllers/user.js";
 
+import {
+  postHabit,
+  getHabits,
+  updateHabit,
+  deleteHabit,
+} from "./controllers/habit.js";
 
-//middleware declaration
-const middleware = async (req, res, next) => {
-  console.log(`Request received at ${req.url}`);
-  next();
-};
+import {
+  getProgressSummary,
+  logHabitProgress,
+} from "./controllers/progress.js";
 
 const app = express();
-
-//middlewares
 app.use(express.json());
 app.use(cors());
-app.use(middleware);
 
-//MongoDB Connection
 const connectDB = async () => {
   const conn = await mongoose.connect(process.env.MONGO_URI);
 
@@ -30,33 +34,34 @@ const connectDB = async () => {
   }
 };
 
-//health-checkup
 app.get("/health", (req, res) => {
   return res.status(200).json({ message: "Server is Healthy!" });
 });
 
 //login
-app.post("/login", postLogin);
-
+app.post("/login",authenticate, postLogin);
 //signup
-app.post("/signup", postSignup);
+app.post("/signup",authenticate, postSignup);
 
 //to create a new habit
-app.post("/habit", postHabit);
+app.post("/habit",authenticate, postHabit);
 
 //to get all the habits
-app.get("/habit", getHabit);
-
-//to get a specific habit
-app.get("/habit/:id", getSpecificHabit);
+app.get("/habit",authenticate, getHabits);
 
 //to update a habit
-app.put("/habit/:id", updateHabit);
+app.put("/habit/:id",authenticate, updateHabit);
 
 //to delete an habit
-app.delete("/delete/:id", deleteHabit);
+app.delete("/delete/:id",authenticate, deleteHabit);
 
-//PORT
+//To track progress
+app.get("/progress",authenticate, getProgressSummary);
+
+//To log a progress entry for a specific habit
+app.post("/habits/:id/log",authenticate, logHabitProgress);
+
+
 const PORT = process.env.PORT || 5002;
 
 app.listen(PORT, () => {

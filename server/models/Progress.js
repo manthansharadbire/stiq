@@ -1,3 +1,5 @@
+import {Schema, model} from 'mongoose';
+
 const progressSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
@@ -10,3 +12,8 @@ const progressSchema = new Schema({
     longestStreak: { type: Number, default: 0 },
   },
 });
+
+const Progress = model("Progress", progressSchema)
+
+export default Progress;
+
