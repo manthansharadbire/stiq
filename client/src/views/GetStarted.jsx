@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import getstarted1 from './../assets/getstarted1.webp'
+import getstarted2 from './../assets/getstarted2.webp'
+import getstarted4 from './../assets/getstarted4.webp'
 
 const GetStarted = () => {
   const navigate = useNavigate();
@@ -23,8 +26,27 @@ const GetStarted = () => {
         <div className="w-full h-full animate-particles"></div>
       </div>
 
+      {/* Images with animation */}
+      <div className="flex gap-6 mt-12 z-10 animate-fadeup">
+        <img
+          src={getstarted1}
+          alt="logo1"
+          className="bg-lime-400 rounded-3xl h-[220px] w-[220px] transform transition-all duration-500 group-hover:scale-105 hover:scale-110 animate-fadeup"
+        />
+        <img
+          src={getstarted2}
+          alt="logo2"
+          className="bg-lime-400 rounded-3xl h-[220px] w-[220px] transform transition-all duration-500 group-hover:scale-105 hover:scale-110 animate-fadeup"
+        />
+        <img
+          src={getstarted4}
+          alt="logo4"
+          className="bg-lime-400 rounded-3xl h-[220px] w-[220px] transform transition-all duration-500 group-hover:scale-105 hover:scale-110 animate-fadeup"
+        />
+      </div>
+
       {/* Main content */}
-      <div className="text-center mt-[200px] z-10">
+      <div className="text-center mt-[80px] z-10">
         <h1 className="text-6xl md:text-8xl font-extrabold mb-6 text-white tracking-tight animate-zoom3d">
           Welcome to <span className="text-lime-400">STIQ</span>
         </h1>
