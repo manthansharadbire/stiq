@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import getstarted1 from './../assets/getstarted1.webp'
-import getstarted2 from './../assets/getstarted2.webp'
-import getstarted4 from './../assets/getstarted4.webp'
+import getstarted1 from "./../assets/getstarted1.webp";
+import getstarted2 from "./../assets/getstarted2.webp";
+import getstarted4 from "./../assets/getstarted4.webp";
 
 const GetStarted = () => {
   const navigate = useNavigate();
@@ -12,22 +12,23 @@ const GetStarted = () => {
     setIsAnimating(true);
     setTimeout(() => {
       navigate(path);
-    }, 800);
+    }, 500); 
   };
+  
 
   return (
     <div
       className={`flex flex-col items-center justify-center h-screen px-6 bg-gradient-to-br from-black via-[#0D0D0D] to-[#1a1a1a] overflow-hidden transition-all duration-700 ${
-        isAnimating ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
+        isAnimating
+          ? "-translate-y-full opacity-0"
+          : "translate-y-0 opacity-100"
       } relative`}
     >
-      {/* Animated light particles background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="w-full h-full animate-particles"></div>
       </div>
 
-      {/* Images with animation */}
-      <div className="flex gap-6 mt-12 z-10 animate-fadeup">
+      <div className="flex gap-6 z-10 animate-fadeup">
         <img
           src={getstarted1}
           alt="logo1"
@@ -45,28 +46,25 @@ const GetStarted = () => {
         />
       </div>
 
-      {/* Main content */}
       <div className="text-center mt-[80px] z-10">
         <h1 className="text-6xl md:text-8xl font-extrabold mb-6 text-white tracking-tight animate-zoom3d">
           Welcome to <span className="text-lime-400">STIQ</span>
         </h1>
-        <p className="text-2xl md:text-2xl mb-10 text-gray-300 font-medium max-w-2xl mx-auto animate-fadeup">
+        <p className="text-2xl md:text-2xl mb-10 text-white font-medium max-w-2xl mx-auto animate-fadeup">
           Track your daily activities and boost your{" "}
           <span className="text-lime-400 text-3xl">productivity</span>.
         </p>
 
-        {/* 3D flipping button */}
         <div className="relative flex flex-col items-center group perspective-1000">
           <button
             onClick={() => handleNavigation("/signup")}
-            className="relative w-full max-w-md py-4 mb-8 bg-lime-400 text-black text-2xl font-bold rounded-xl transition-transform duration-500 transform group-hover:rotate-y-12 hover:shadow-[0_0_25px_5px_rgba(163,230,53,0.6)] group-hover:scale-105"
+            className="relative w-full max-w-md py-4 mb-3 bg-lime-400 text-black text-2xl font-bold rounded-xl transition-transform duration-500 transform group-hover:rotate-y-12 hover:shadow-[0_0_25px_5px_rgba(163,230,53,0.6)] group-hover:scale-105"
           >
             Get Started
           </button>
         </div>
 
-        {/* Login Text */}
-        <div className="text-gray-400 text-md md:text-lg mt-4 animate-fadeup delay-200">
+        <div className="text-white text-md md:text-lg mt-1 animate-fadeup delay-200">
           Already have an account?{" "}
           <span
             onClick={() => handleNavigation("/login")}
@@ -77,7 +75,6 @@ const GetStarted = () => {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="absolute bottom-6 text-center text-gray-500 text-xs md:text-sm z-10">
         <p>
           By continuing, you agree to our{" "}
@@ -90,7 +87,6 @@ const GetStarted = () => {
         </p>
       </div>
 
-      {/* Custom Animations */}
       <style>
         {`
           /* Background particles animation */
@@ -142,7 +138,7 @@ const GetStarted = () => {
           }
 
           /* Group hover rotate Y */
-          .group-hover\\:rotate-y-12:hover {
+          .group-hover:rotate-y-12:hover {
             transform: rotateY(12deg);
           }
         `}

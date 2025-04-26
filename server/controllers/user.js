@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 //signup
 const postSignup = async (req, res) => {
   try {
-    const { name, email, password, city, gender, age } = req.body;
+    const { name, email, password } = req.body;
 
     if (!name || !email || !password || !gender || !age) {
       return res.status(400).json({
@@ -28,9 +28,6 @@ const postSignup = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      city,
-      gender,
-      age,
     });
 
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {

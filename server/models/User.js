@@ -19,18 +19,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    city: {
-      type: String,
-    },
-    gender: {
-      type: String,
-      required: true,
-      errorMessage: "Please select your gender",
-    },
-    age: {
-      type: Number,
-      required: true,
-    },
   },
   {
     timestamps: true,
