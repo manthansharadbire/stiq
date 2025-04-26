@@ -33,7 +33,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="max-w-md w-full space-y-8 mx-auto">
+    <div className="max-w space-y-8 mx-auto bg-green-500 min-h-screen">
       <h2 className="text-center text-3xl font-extrabold text-gray-900">
         Sign Up
       </h2>
