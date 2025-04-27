@@ -5,6 +5,7 @@ import Signup from "./views/Signup";
 import GetStarted from "./views/GetStarted";
 import Login from "./views/Login";
 import Habit from "./views/Habit";
+import TermsAndConditions from "./views/TermsandCo";
 import "./index.css"; 
 
 
@@ -18,6 +19,7 @@ root.render(
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/habit" element={<Habit />} />
+        <Route path="/termsandconditions" element={<TermsAndConditions />} />
     
       </Routes>
     </BrowserRouter>

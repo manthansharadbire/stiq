@@ -4,6 +4,7 @@ import getstarted1 from "./../assets/getstarted1.webp";
 import getstarted2 from "./../assets/getstarted2.webp";
 import getstarted4 from "./../assets/getstarted4.webp";
 
+
 const GetStarted = () => {
   const navigate = useNavigate();
   const [isAnimating, setIsAnimating] = useState(false);
@@ -78,7 +79,8 @@ const GetStarted = () => {
       <div className="absolute bottom-6 text-center text-gray-500 text-xs md:text-sm z-10">
         <p>
           By continuing, you agree to our{" "}
-          <span className="underline cursor-pointer hover:text-lime-400">
+          <span className="underline cursor-pointer hover:text-lime-400" 
+        onClick={()=>handleNavigation("/termsandconditions")}>
             Terms & Conditions
           </span>
         </p>
